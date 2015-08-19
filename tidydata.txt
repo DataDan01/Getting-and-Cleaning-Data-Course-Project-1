@@ -1,4 +1,4 @@
-"Subject" "Activity" "Feature" "Value"
+"Subject" "Activity" "Feature" "Mean Value"
 "1" "Walking" "tBodyAcc.mean...X" 0.277330758736842
 "2" "Walking" "tBodyAcc.mean...X" 0.276426586440678
 "3" "Walking" "tBodyAcc.mean...X" 0.275567462068966
