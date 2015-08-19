@@ -79,7 +79,7 @@ varnames<-names(aggregateddata)[3:ncol(aggregateddata)]
 
 tidydata<-melt(aggregateddata,id=c("Subject","Activity"),measure.vars=varnames)
 
-colnames(tidydata)[3:4]<-c("Feature","Value")
+colnames(tidydata)[3:4]<-c("Feature Mean","Value")
 
 ##And finally now we can write the final table.
 
