@@ -66,8 +66,21 @@ factorlist<-list(alldatasubset$Subject,alldatasubset$Activity)
 
 aggregateddata<-aggregate(alldatasubset[,3:ncol(alldatasubset)],by=factorlist,FUN = mean)
 
-##We need to relabel the first two columns and then finally write the table.
+##We need to relabel the first two columns and then melt the table into something more neat.
+####We will be using the reshape package, which can be installed using install.packages("reshape").
+
+if("reshape" %in% rownames(installed.packages()) == FALSE) {install.packages("reshape")}
+
+library(reshape)
 
 colnames(aggregateddata)[1:2]<-c("Subject","Activity")
 
-write.table(aggregateddata,file="./finaltable.txt",row.names=FALSE)
+varnames<-names(aggregateddata)[3:ncol(aggregateddata)]
+
+tidydata<-melt(aggregateddata,id=c("Subject","Activity"),measure.vars=varnames)
+
+colnames(tidydata)[3:4]<-c("Feature","Value")
+
+##And finally now we can write the final table.
+
+write.table(tidydata,file="./tidydata.txt",row.names=FALSE)
